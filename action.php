@@ -1,6 +1,6 @@
 
 <?php  
-// Open Connection
+// Open mysql Connection
 $con = @mysqli_connect('localhost', 'root', '', 'sample_test');
 
 if (!$con) {
@@ -31,7 +31,7 @@ $sale_date_ends = '2007-05-07';*/
    
     if (isset($result)) {
 	foreach($result as $row) {
-   // var_dump($row);
+   
 		if($row['gender'] == 'Male') {
 			$salute = 'Mr. ';
 		}
