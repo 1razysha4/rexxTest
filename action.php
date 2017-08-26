@@ -8,7 +8,7 @@ if (!$con) {
 	exit();
 }
 
-//var_dump($_POST);
+
 $sale_date = DateTime::createFromFormat('d/m/Y', $_POST ['sale_date']);
 $sale_date_start = $sale_date->format('Y-m-d'); 
 
@@ -16,9 +16,6 @@ $sale_date_end = DateTime::createFromFormat('d/m/Y', $_POST ['sale_date_end']);
 $sale_date_ends = $sale_date_end->format('Y-m-d'); 
 
 
-/*$sale_date_start = '2007-04-02';
-$sale_date_ends = '2007-05-07';*/
-//if (isset($_POST['sale_date'])) {
 	$sql = "SELECT C.customer_id, C.firstname, C.lastname, C.gender, COUNT(S1.sale_id) as sales_count_s1, SUM(S1.sale_amount) as sale_amount_s1, MAX(S1.sale_date) as sale_date_s1, COUNT(S2.sale_id) as sales_count_s2, SUM(S2.sale_amount) as sale_amount_s2, MAX(S2.sale_date) as sale_date_s2 FROM CUSTOMER AS C JOIN sales1 AS S1 ON S1.customer_id = C.customer_id JOIN sales2 AS S2 ON S2.customer_id = C.customer_id WHERE (S1.sale_date >= '$sale_date_start' AND S1.sale_date <= '$sale_date_ends') OR (S2.sale_date >= '$sale_date_start' AND S2.sale_date <= '$sale_date_ends') GROUP BY C.customer_id	
     ";
 	
